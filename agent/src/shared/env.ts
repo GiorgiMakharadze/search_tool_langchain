@@ -12,6 +12,7 @@ const EnvSchema = z.object({
   GROQ_MODEL: z.string().default("llama-3.1-8b-instant"),
   SEARCH_PROVIDER: z.string().default("tavily"),
   TAVILY_API_KEY: z.string().optional(),
+  TAVILY_API_URL: z.string().default("https://api.tavily.com/v1/search"),
 });
 
 export const env = EnvSchema.parse(process.env);
