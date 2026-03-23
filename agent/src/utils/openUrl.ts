@@ -49,9 +49,9 @@ export async function openUrl(url: string) {
     : raw;
 
   const cleaned = collapseWhitespace(text);
-  const capped = cleaned.slice(0, 10000);
+  const capped = cleaned.slice(0, 80000);
 
-  return OpenUrlOutputSchema({
+  return OpenUrlOutputSchema.parse({
     url: normalizedUrl,
     content: capped,
   });
