@@ -51,7 +51,7 @@ async function searchTavilyUtil(query: string) {
   return WebSearchResultSchema.parse(normilizedResult);
 }
 
-async function safeText(res: Response) {
+export async function safeText(res: Response) {
   try {
     return await res.json();
   } catch {
