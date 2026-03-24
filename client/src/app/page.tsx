@@ -53,6 +53,7 @@ export default function Home() {
       });
       const json = await res.json();
       const timeDiff = Math.round(performance.now() - oldTime);
+      // error handling
 
       if (!res.ok) {
         const errorMsg = "Request failed";
@@ -61,12 +62,13 @@ export default function Home() {
           {
             role: "assistant",
             content:
-              "I tried to answer, but something went wrong. Please try again",
+              "I tried to ans, but something went wrong. Please try again",
             sources: [],
             time: timeDiff,
             error: errorMsg,
           },
         ]);
+        //success
       } else {
         const data = json as SearchResponse;
         setChat((old) => [
@@ -86,8 +88,7 @@ export default function Home() {
         ...old,
         {
           role: "assistant",
-          content:
-            "I tried to answer, but something went wrong. Please try again",
+          content: "I tried to ans, but something went wrong. Please try again",
           sources: [],
           time: timeDiff,
           error: errorMsg,
@@ -129,7 +130,7 @@ export default function Home() {
               Examples:
               <br />
               <code className="rounded bg-gray-100 px-1 py-2 text-[12px]">
-                Top 10 engineering colleges in USA 2026
+                Top 10 engineering colleges in India 2025
               </code>
               <br />
               <code className="rounded bg-gray-100 px-1 py-2 text-[12px]">
@@ -139,6 +140,7 @@ export default function Home() {
           </div>
         )}
         {chat.map((turn, idx) => {
+          // user role
           if (turn.role === "user") {
             return (
               <div
@@ -154,6 +156,7 @@ export default function Home() {
             );
           }
 
+          //assitant
           return (
             <div
               key={idx}
